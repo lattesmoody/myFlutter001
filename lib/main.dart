@@ -8,34 +8,47 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Character card',
-      home: MyCard(), // 앱 실행 시 제일 먼저 보여지는 경로.
+      title: 'BESTCHOCO',
+      home: Grade(),
     );
   }
 }
 
-class MyCard extends StatelessWidget {
-  const MyCard({Key? key}) : super(key: key);
+class Grade extends StatelessWidget {
+  const Grade({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.amber[800],
         appBar: AppBar(
           title: Text('BESTCHOCO'),
+          backgroundColor: Colors.amber[700],
           centerTitle: true,
-          backgroundColor: Colors.redAccent,
-          elevation: 0.0, // title바를 플랫하게 적용.
+          elevation: 0.0,
         ),
-        body: Center(
-          child: Column(
-            // Axis: 가로 축, 세로 축 => 세로 축 기준으로 상단,중간,하단으로 정렬할 때 쓰인다.
-            //mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('hello'),
-              Text('hello'),
-              Text('hello'),
-            ],
-          ),
-        ));
+        body: Padding(
+            padding: EdgeInsets.fromLTRB(30, 40, 0, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'NAME',
+                  style: TextStyle(
+                    color: Colors.white,
+                    letterSpacing: 2.0,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text('BESTCHOCO',
+                    style: TextStyle(
+                        color: Colors.white,
+                        letterSpacing: 2.0,
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.bold))
+              ],
+            )));
   }
 }
