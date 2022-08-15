@@ -28,13 +28,7 @@ class MyPage extends StatelessWidget {
         title: Text('Appbar icon menu'),
         centerTitle: true,
         elevation: 0,
-        // leading: 간단한 위젯이나 아이콘 등을 appbar title 왼쪽에 위치 시키는 것.
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {
-            print('menu button is clicked');
-          },
-        ),
+
         // actions: 복수의 아이콘 버튼 등을 오른쪽에 배치할 때
         actions: [
           IconButton(
@@ -52,6 +46,29 @@ class MyPage extends StatelessWidget {
             },
           ),
         ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/reckingball.jpg'),
+              ),
+              accountEmail: Text('BESTCHOCO'),
+              accountName: Text('bestchoco@kakao.com'),
+              onDetailsPressed: () {
+                print('arrow is clicked');
+              },
+              decoration: BoxDecoration(
+                  color: Colors.red[200],
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
+                  )),
+            )
+          ],
+        ),
       ),
     );
   }
