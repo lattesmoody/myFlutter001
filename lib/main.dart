@@ -1,124 +1,58 @@
+// import tab, fm tab.
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
 
+// stl tab.
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'BESTCHOCO',
-      home: Grade(),
+      title: 'Appbar',
+      theme: ThemeData(primarySwatch: Colors.red),
+      home: MyPage(),
     );
   }
 }
 
-class Grade extends StatelessWidget {
-  const Grade({Key? key}) : super(key: key);
+class MyPage extends StatelessWidget {
+  const MyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.amber[800],
-        appBar: AppBar(
-          title: const Text('BESTCHOCO'),
-          backgroundColor: Colors.amber[700],
-          centerTitle: true,
-          elevation: 0.0,
+      appBar: AppBar(
+        title: Text('Appbar icon menu'),
+        centerTitle: true,
+        elevation: 0,
+        // leading: 간단한 위젯이나 아이콘 등을 appbar title 왼쪽에 위치 시키는 것.
+        leading: IconButton(
+          icon: Icon(Icons.menu),
+          onPressed: () {
+            print('menu button is clicked');
+          },
         ),
-        body: Padding(
-            padding: const EdgeInsets.fromLTRB(30, 40, 0, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/reckingball.jpg'),
-                    radius: 60,
-                  ),
-                ),
-                Divider(
-                  height: 60, // 위의 객체랑 30, 아래 객체랑 30
-                  color: Colors.grey[850],
-                  thickness: 0.5,
-                  endIndent: 30,
-                ),
-                Text(
-                  'NAME',
-                  style: TextStyle(
-                    color: Colors.white,
-                    letterSpacing: 2.0,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text('BESTCHOCO',
-                    style: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: 2.0,
-                        fontSize: 28.0,
-                        fontWeight: FontWeight.bold)),
-                SizedBox(height: 30.0),
-                Text(
-                  'BESTCHOCO POWER LEVEL',
-                  style: TextStyle(
-                    color: Colors.white,
-                    letterSpacing: 2.0,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text('14',
-                    style: TextStyle(
-                        color: Colors.white,
-                        letterSpacing: 2.0,
-                        fontSize: 28.0,
-                        fontWeight: FontWeight.bold)),
-                SizedBox(
-                  height: 30.0,
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.check_circle_outline),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text('using lightsaber',
-                        style: TextStyle(fontSize: 16.0, letterSpacing: 1.0)),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.check_circle_outline),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text('face hero tattoo',
-                        style: TextStyle(fontSize: 16.0, letterSpacing: 1.0)),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(Icons.check_circle_outline),
-                    SizedBox(
-                      width: 10.0,
-                    ),
-                    Text('fire flames',
-                        style: TextStyle(fontSize: 16.0, letterSpacing: 1.0)),
-                  ],
-                ),
-                Center(
-                  child: CircleAvatar(
-                    backgroundImage: AssetImage('assets/tracer.jpg'),
-                    radius: 40,
-                    backgroundColor: Colors.amber[800],
-                  ),
-                )
-              ],
-            )));
+        // actions: 복수의 아이콘 버튼 등을 오른쪽에 배치할 때
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            // 함수의 형태, 일반 버튼이나 아이콘 버튼을 터치했을 때
+            // 일어나는 이벤트를 정의 하는 곳
+            onPressed: () {
+              print('shopping cart button is clicked');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print('Search button is clicked');
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
