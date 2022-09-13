@@ -3,43 +3,50 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Snack Bar',
       theme: ThemeData(primarySwatch: Colors.red),
-      home: MyPage(),
+      home: HomeBody(),
     );
   }
 }
 
-class MyPage extends StatelessWidget {
+class HomeBody extends StatelessWidget {
+  const HomeBody({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: ElevatedButton(
+        child: Text('Go to the second page'),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SecondPage()),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  const SecondPage({Key? key}) : super(key: key);
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Snack Bar'),
-        centerTitle: true,
+        title: const Text('Second Page'),
       ),
-      body: Builder(builder: (context){
-      return Center(
-        child:TextButton(
-          child: Text(
-            'Show me',
-            style: TextStyle(color: Colors.white),
-          ),
-          color: Colors.red,
-          onPressed: () {
-            Scaffold.of(context).showSnackBar(SnackBar(
-              content: Text('Hello'),
-            ));
-          },
-        ),
-      },
+      body: const Center(
+        child:
+            Text("안녕하세요", style: TextStyle(fontSize: 20.0, color: Colors.red)),
+      ),
     );
   }
 }
-
-// Scaffold.of(context) method
-/*
-  "현재 주어진 context에서 위로 올라가면서 가장 가까운 Scaffold를 찾아서 반환하라."
-
-*/
